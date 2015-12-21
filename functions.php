@@ -132,11 +132,16 @@ require get_template_directory() . '/inc/comment-action.php';
 ///////////////////
 //
 function zhb_update_banner(){
+    // Get the bing picture as the head banner
     $position = get_template_directory() . '/static/img/banner.jpg';
-    $lastModifiedTime = filemtime($position);
-    $currentTime = date("Y-m-d");
-    if (strtotime($currentTime) <= strtotime(date("Y-m-d", $lastModifiedTime))) {
-        return;
+    if (file_exists($position)) {
+        $lastModifiedTime = filemtime($position);
+        $currentTime = date("Y-m-d H:i:s", time());
+        // echo $currentTime;
+        // echo date("Y-m-d H:i:s", $lastModifiedTime);
+        if (strtotime($currentTime) <= strtotime(date("Y-m-d", $lastModifiedTime))) {
+            return;
+        }
     }
     $bingtext=file_get_contents('http://www.bing.com/');
     //获取g_img={url:'与'之间的内容
@@ -145,7 +150,6 @@ function zhb_update_banner(){
     $bingtarStr = str_replace("","",$match);
     //提取数组里第二个值
     $bingurlcontents = "http://www.bing.com".$bingtarStr[1];
-
     $url = preg_replace( '/(?:^[\'"]+|[\'"\/]+$)/', '', $bingurlcontents);//去除URL连接上面可能的引号
     $hander = curl_init();
 
@@ -160,3 +164,10 @@ function zhb_update_banner(){
     curl_close($hander);
     fclose($fp);
 }
+
+function zhb_change_comment_form($input = array()){
+    $input['fields']['email'] = ' ';
+    $input['fields']['url'] = ' ';
+    return $input;
+}
+add_filter('comment_form_defaults', 'zhb_change_comment_form');
