@@ -16,6 +16,6 @@ if ( post_password_required() )
     </ol>
     <?php puma_comment_nav(); ?>
     <?php if(comments_open()) : ?>
-        <?php comment_form(array('comment_notes_after'=>''));?>
+        <?php comment_form(array('comment_notes_after'=>'', 'comment_notes_before'=>''));?>
     <?php endif; ?>
 </div>

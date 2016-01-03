@@ -10,14 +10,14 @@
             <p class="with-img"><?php the_post_thumbnail( 'full' ); ?></p>
             <p><?php echo mb_strimwidth(strip_shortcodes(strip_tags(apply_filters('the_content', $post->post_content))), 0, 220,"...");?></p>
         <?php else : ?>
-        <?php the_content('');?>    
+        <?php the_content('');?>
         <?php endif;?>
-        
+
     </div>
     <div class="block-footer">
-        By <?php the_author();?> . In <?php the_category(',');?>.
+        发表在 <?php the_category(',');?>.
         <div class="block-footer-inner">
-            <?php if(function_exists('wpl_get_like_count')) echo wpl_get_like_count(get_the_ID());?> likes . <?php echo get_comments_number();?> replies.
+            <?php if(function_exists('wpl_get_like_count')) echo wpl_get_like_count(get_the_ID() . 'likes .');?>  <?php echo get_comments_number();?> 条评论.
         </div>
     </div>
 </article>

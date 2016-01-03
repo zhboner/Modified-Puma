@@ -166,8 +166,16 @@ function zhb_update_banner(){
 }
 
 function zhb_change_comment_form($input = array()){
-    $input['fields']['email'] = ' ';
     $input['fields']['url'] = ' ';
+    $input['comment_field'] = $input['comment_field'] . '<button class="1234444" type="button">1111</button>';
     return $input;
 }
 add_filter('comment_form_defaults', 'zhb_change_comment_form');
+
+function zhb_check_referrer_comment(){
+// filter rubbish comments
+    if (!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] == '') {
+        wp_die();
+    }
+}
+add_action('check_comment_flood', 'zhb_check_referrer_comment');
