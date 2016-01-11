@@ -178,3 +178,11 @@ function zhb_check_referrer_comment(){
     }
 }
 add_action('check_comment_flood', 'zhb_check_referrer_comment');
+
+function recover_comment_fields($comment_fields){
+    //调整评论区文本域顺序
+    $comment = array_shift($comment_fields);
+    $comment_fields =  array_merge($comment_fields ,array('comment' => $comment));
+    return $comment_fields;
+}
+add_filter('comment_form_fields','recover_comment_fields');
