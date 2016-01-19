@@ -2,8 +2,6 @@
     <main class="main-content">
         <section class="blockGroup">
             <?php if (have_posts()):
-            	query_posts($query_string .'&cat=-184');
-
                 while (have_posts()): the_post();
                     get_template_part('template-parts/content', get_post_format());
                 endwhile;

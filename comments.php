@@ -14,8 +14,10 @@ if ( post_password_required() )
         ) );
         ?>
     </ol>
-    <?php puma_comment_nav(); ?>
+    <nav class="navigation comment-navigation u-textAlignCenter" data-fuck="<?php the_ID();?>">
+    <?php paginate_comments_links(array('prev_next'=>false)); ?>
+    </nav>
     <?php if(comments_open()) : ?>
-        <?php comment_form(array('comment_notes_after'=>'', 'comment_notes_before'=>''));?>
+        <?php comment_form(array('comment_notes_after'=>''));?>
     <?php endif; ?>
 </div>
