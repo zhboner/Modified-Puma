@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?php wp_title( '-', true, 'right' ); ?></title>
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri();?>/static/img/favicon.ico" type="image/vnd.microsoft.icon">
-    <?php wp_head();zhb_update_banner();?>
+    <?php wp_head();?>
 </head>
 <body <?php body_class();?>>
 <div class="surface-content">

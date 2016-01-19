@@ -5,7 +5,7 @@
                 <header class="section-header u-textAlignCenter">
                     <h2 class="grap--h2"><?php the_title();?></h2>
                     <div class="block-postMetaWrap">
-                        <time><?php echo get_the_date('Y/m/d');?></time>
+                        <time>最后编辑于 <?php echo get_the_modified_date('Y/m/d  G:i');?></time>
                         <?php if(function_exists('fancyratings')) fancyratings(get_the_ID(),'sb');?>
                     </div>
                 </header>

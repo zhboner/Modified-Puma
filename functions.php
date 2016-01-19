@@ -238,6 +238,7 @@ function disable_emojis_tinymce( $plugins ) {
     return array_diff( $plugins, array( 'wpemoji' ) );
 }
 
+
 function zhb_update_banner(){
     // Get the bing picture as the head banner
     $position = get_template_directory() . '/static/img/banner.jpg';
@@ -285,3 +286,6 @@ function zhb_check_referrer_comment(){
     }
 }
 add_action('check_comment_flood', 'zhb_check_referrer_comment');
+
+wp_schedule_event(time(), 'daily', 'do_this_everyday');
+add_action('do_this_everyday', 'zhb_update_banner');
