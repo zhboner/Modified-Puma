@@ -1,6 +1,5 @@
 <?php
 define('PUMA_VERSION','2.0.5');
-
 if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
     require get_template_directory() . '/inc/back-compat.php';
 }
@@ -271,6 +270,8 @@ function zhb_update_banner(){
     curl_exec($hander);
     curl_close($hander);
     fclose($fp);
+    
+    wp_clear_scheduled_hook('do_this_everyday');
 }
 
 function zhb_change_comment_form($input = array()){
